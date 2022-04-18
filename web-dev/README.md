@@ -43,7 +43,10 @@
 
 ## 중간 제작 과정
 
-- .
+### (2022.04.19) 정적페이지 완성 (html, css 사용)
+
+![image](https://user-images.githubusercontent.com/48672106/163839367-fd269bca-9514-4375-aa3e-d05f380cd448.png)
+
 
 ### 부족하다고 생각한 사항 / 보완하고 싶은 부분 :
 
