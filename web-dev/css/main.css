@@ -48,17 +48,18 @@ body {
 }
 
 .product-container {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
 .product {
-  width: 100%;
+  max-width: 24%;
   height: 100%;
   margin-top: 20px;
   padding: 30px;
   background: #fff;
+  margin-right: 1px;
 }
 
 .product img {
