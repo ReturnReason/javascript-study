@@ -30,7 +30,7 @@ body {
   margin: 0 auto;
   max-width: 1200px;
   width: 100%;
-  padding: 40px;
+  padding: 25px;
   padding-top: 20px;
 }
 
@@ -54,12 +54,12 @@ body {
 }
 
 .product {
-  max-width: 24%;
+  max-width: 23%;
   height: 100%;
   margin-top: 20px;
   padding: 30px;
   background: #fff;
-  margin-right: 1px;
+  margin-right: 10px;
 }
 
 .product img {
