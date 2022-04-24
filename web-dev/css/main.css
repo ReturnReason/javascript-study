@@ -60,6 +60,7 @@ body {
   padding: 30px;
   background: #fff;
   margin-right: 10px;
+  cursor: move;
 }
 
 .product img {
@@ -112,7 +113,8 @@ body {
 .dragbox {
   background: #000;
   width: 100%;
-  height: 350px;
+  min-height: 350px;
+  height: auto;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -121,4 +123,23 @@ body {
 .dragbox-text {
   color: #fff;
   font-size: 1.2rem;
+}
+
+/* 드래그 되는지 */
+.draggable {
+  opacity: 0.5;
+}
+
+/* 장바구니 안에 아이템 들어가면 */
+.product.itemInTheBox {
+  border-radius: 5px;
+  height: 100%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  text-align: center;
+  padding: 10px;
+}
+
+.product.itemInTheBox:last-child {
+  margin-right: 0;
 }
