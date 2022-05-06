@@ -85,28 +85,17 @@ shoppingCart.addEventListener('dragover', (e) => {
   e.preventDefault;
   const dragItem = document.querySelector('.draggable');
 
-  productContainer.addEventListener('dragend', () => {
+  productContainer.addEventListener('dragend', (e) => {
     shoppingCart.appendChild(dragItem);
     dragItem.classList.remove('draggable');
     dragItem.classList.add('itemInTheBox');
-  });
 
-  const cartText = document.querySelector('.dragbox-text');
-  if (cartText.innerHTML !== '') {
-    cartText.innerHTML = '';
-  }
+    const cartText = document.querySelector('.dragbox-text');
+    if (cartText.innerHTML !== '') {
+      cartText.innerHTML = '';
+    }
+  });
 });
 
-/* 1. 상품을 드래그한다 dragstart(현재 드래그중) 클래스 부착
-드래그 놓으면 클래스 뗴기
-
-현재 드래그중인 요소 찾아서 드래그 박스 안에 놓으면 요소로 추가
-기존 텍스트 삭제
-
-// function hasTextBox(parent) {
-//   const dragBoxText = document.querySelector('.dragbox-text');
-//   // shoppingCart.removeChild(dragBoxText);
-//   if (dragBoxText) {
-//     console.log('자식이없넹');
-//   } else {
-//     console.log('dragBoxText있음'); */
+// 드래그 후 장바구니에 옮겨지긴 하는데
+// 드래그하기 전 아이템들이 사라지면 안됨.

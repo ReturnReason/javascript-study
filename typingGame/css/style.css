@@ -1,0 +1,38 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.word {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.input {
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.time-score-container {
+  display: flex;
+  width: 200px;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.btn {
+  border: none;
+  background: black;
+  color: #fff;
+  padding: 10px 15px;
+  border-radius: 5px;
+  margin-top: 20px;
+}
+
+.loading {
+  background: #ccc;
+  cursor: not-allowed;
+}
