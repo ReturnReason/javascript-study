@@ -2,6 +2,7 @@ const searchInput = document.querySelector('#search-input'); // 검색창
 const productContainer = document.querySelector('.product-container'); // 상품 컨테이너
 const shoppingCart = document.querySelector('.dragbox'); // 드래그 할곳
 let productList = []; // store.json 파일 리스트
+let dragItem; // 장바구니로 드래그 될 상품 태그 요소
 
 /* JSON데이터 받아와서 productList 배열에 원본 데이터 저장하기 */
 roadData();
@@ -47,7 +48,7 @@ function template(productName, brandName, photo, price) {
 }
 
 searchInput.addEventListener('keyup', function () {
-  let inputText = searchInput.value.trim().toUpperCase(); // 검색어 공백 제거해서 저장
+  let inputText = searchInput.value.trim().toUpperCase(); // 검색어 공백 제거
   const productList = newProductList(inputText);
 
   productContainer.innerHTML = '';
@@ -74,16 +75,21 @@ productContainer.addEventListener('dragend', (e) => {
 
 shoppingCart.addEventListener('dragover', (e) => {
   e.preventDefault;
-  const dragItem = document.querySelector('.draggable');
+  dragItem = document.querySelector('.draggable');
+});
 
-  productContainer.addEventListener('dragend', (e) => {
-    shoppingCart.appendChild(dragItem);
-    dragItem.classList.remove('draggable');
-    dragItem.classList.add('itemInTheBox');
+productContainer.addEventListener('dragend', (e) => {
+  dragItem.classList.remove('draggable');
 
-    const cartText = document.querySelector('.dragbox-text');
-    if (cartText.innerHTML !== '') {
-      cartText.innerHTML = '';
-    }
-  });
+  // 드래그한 아이템 요소 복사
+  const cloneElem = e.target.cloneNode(true);
+  cloneElem.classList.add('itemInTheBox');
+
+  // 장바구니에 추가
+  shoppingCart.appendChild(cloneElem);
+
+  const cartText = document.querySelector('.dragbox-text');
+  if (cartText.innerHTML !== '') {
+    cartText.innerHTML = '';
+  }
 });
