@@ -47,6 +47,12 @@ function template(productName, brandName, photo, price) {
   `;
 }
 
+/* 
+  ***********
+    검색하기 
+  ************
+*/
+
 searchInput.addEventListener('keyup', function () {
   let inputText = searchInput.value.trim().toUpperCase(); // 검색어 공백 제거
   const productList = newProductList(inputText);
@@ -63,10 +69,16 @@ function newProductList(inputText) {
   return findProduct;
 }
 
+/* 
+  ***********
+    장바구니 
+  ************
+*/
+
 // 드래그 & 드랍 이벤트
 productContainer.addEventListener('dragstart', (e) => {
   e.target.classList.add('draggable');
-  console.log(e.target);
+  console.log('현재 선택된 요소 :', e.target);
 });
 
 productContainer.addEventListener('dragend', (e) => {
@@ -81,15 +93,38 @@ shoppingCart.addEventListener('dragover', (e) => {
 productContainer.addEventListener('dragend', (e) => {
   dragItem.classList.remove('draggable');
 
-  // 드래그한 아이템 요소 복사
-  const cloneElem = e.target.cloneNode(true);
-  cloneElem.classList.add('itemInTheBox');
+  // 드래그한 아이템 요소 장바구니에 만들기
+  const currentDragItem = e.target.cloneNode(true);
+  currentDragItem.children[4].remove(); // 담기 버튼 삭제
 
-  // 장바구니에 추가
-  shoppingCart.appendChild(cloneElem);
+  /* 수량 표시할 인풋 만들기 */
+  const amountInput = document.createElement('input');
+  amountInput.setAttribute('type', 'number');
+  amountInput.setAttribute('value', 1);
+  amountInput.classList.add('amount');
+
+  currentDragItem.classList.add('itemInTheBox');
+
+  currentDragItem.insertAdjacentElement('beforeend', amountInput);
+  shoppingCart.insertAdjacentElement('beforeend', currentDragItem);
+
+  // 만약 장바구니에 이미 추가된 아이템이라면 개수 1 추가
 
   const cartText = document.querySelector('.dragbox-text');
   if (cartText.innerHTML !== '') {
     cartText.innerHTML = '';
   }
 });
+
+/* 장바구니 아이템 템플릿 */
+function shoopingCartItem(productName, brandName, photo, price) {
+  return `
+    <div class="product itemInTheBox">
+      <img src="img/${photo}" alt="" draggable="false"/>
+      <h2 class="title">${productName}</h2>
+      <p class="brand-name">${brandName}</p>
+      <h3>가격 : ${price}</h3>
+      <input type="number"/>
+    </div>
+  `;
+}
