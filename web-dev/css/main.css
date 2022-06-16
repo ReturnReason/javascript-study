@@ -110,6 +110,10 @@ body {
   margin-bottom: 10px;
 }
 
+.put-btn {
+  cursor: pointer;
+}
+
 .dragbox {
   background: #000;
   width: 100%;
